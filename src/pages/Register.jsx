@@ -1,42 +1,54 @@
-import Navbar from "../components/Navbar"
-import registerImg from '../assets/registerImg.png'
-import emoji1 from '../assets/emoji1.png'
-import emoji2 from '../assets/emoji2.png'
-import { useEffect, useState } from "react"
-import Button from "../components/Button"
-import axios from "axios"
-
+import { useEffect, useState } from "react";
+import Navbar from "../components/Navbar";
+import registerImg from '../assets/registerImg.png';
+import emoji1 from '../assets/emoji1.png';
+import emoji2 from '../assets/emoji2.png';
+import Button from "../components/Button";
+import axios from "axios";
 
 const defaultValues = {
-	email: '',
-	phone_number: '',
-	team_name: '',
-	group_size: '',
-	project_topic: '',
-	category: '',
+	email: "",
+	phone_number: "",
+	team_name: "",
+	group_size: "",
+	project_topic: "",
+	category: "",
 	privacy_poclicy_accepted: false,
-}
-const Register = () => {
+};
 
-	const baseUrl = "https://backend.getlinked.ai"
+const Register = () => {
+	const baseUrl = "https://backend.getlinked.ai";
 
 	const [formData, setFormData] = useState(defaultValues);
 	const [categories, setCategories] = useState([]);
+	const [validationErrors, setValidationErrors] = useState({
+		email: "",
+		phone_number: "",
+		team_name: "",
+		project_topic: "",
+		category: "",
+		group_size: "",
+		privacy_poclicy_accepted: "",
+	});
 
 
-	const [formErrors, setFormErrors] = useState({});
+	const handleInputFocus = (fieldName) => {
+		// Reset the validation error for the given field when it is focused
+		setValidationErrors((prevErrors) => ({
+			...prevErrors,
+			[fieldName]: "",
+		}));
+	};
 
 	const handleChange = (e) => {
 		const { name, value, type } = e.target;
 
-		// Handles the checkbox separately to toggle its value
 		if (type === 'checkbox') {
 			setFormData((prevData) => ({
 				...prevData,
-				[name]: !prevData[name], // Toggle the value
+				[name]: !prevData[name],
 			}));
 		} else {
-			// For other input types (text, number, etc.), set their values as usual
 			setFormData((prevData) => ({
 				...prevData,
 				[name]: value,
@@ -44,74 +56,78 @@ const Register = () => {
 		}
 	};
 
-
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		const errors = validateForm(formData);
 
-		if (Object.keys(errors).length === 0) {
-			try {
-				const response = await axios.post(`${baseUrl}/hackathon/registration`, formData);
-				if (response.status === 201) {
-					console.log('Registration successful');
-
-					const userData = response.data;
-
-					console.log('User Data:', userData);
-					setFormData(defaultValues);
-				} else {
-					console.error('Unexpected response:', response.status);
-				}
-			} catch (error) {
-				console.error('Error:', error);
-			}
-		} else {
-			setFormErrors(errors);
-		}
-	};
-
-	const validateForm = (data) => {
 		const errors = {};
-		if (!data.team_name || !data.team_name.trim()) {
-			errors.team_name = 'Team name is required.';
+		if (formData.team_name.trim() === "") {
+			errors.team_name = "Team name is required";
 		}
-		if (!data.phone_number || !data.phone_number.trim()) {
-			errors.phone_number = 'Phone number is required.';
+		if (formData.phone_number.trim() === "") {
+			errors.phone_number = "Phone number is required";
 		}
-		if (!data.email || !data.email.trim()) {
-			errors.email = 'Email is required.';
-		} else if (!isValidEmail(data.email)) {
-			errors.email = 'Invalid email format.';
+		if (formData.email.trim() === "") {
+			errors.email = "Email is required";
 		}
-		if (!data.project_topic || !data.project_topic.trim()) {
-			errors.project_topic = 'Project topic is required.';
+		if (formData.project_topic.trim() === "") {
+			errors.project_topic = "Project topic is required";
 		}
-		if (!data.category) {
-			errors.category = 'Category is required.';
+		if (formData.category === "") {
+			errors.category = "Category is required";
 		}
-		if (!data.group_size) {
-			errors.group_size = 'Group size is required.';
+		if (formData.group_size === "") {
+			errors.group_size = "Group size is required";
 		}
-		if (!data.privacy_policy_accepted) {
-			errors.privacy_policy_accepted =
-				'You must accept the privacy policy to register.';
+		if (!formData.privacy_poclicy_accepted) {
+			errors.privacy_poclicy_accepted = "You must accept the privacy policy";
 		}
-		return errors;
+
+		if (Object.keys(errors).length > 0) {
+			setValidationErrors(errors);
+			return;
+		}
+
+		setValidationErrors({});
+
+		try {
+			const modifiedFormData = {
+				email: formData.email,
+				phone_number: formData.phone_number,
+				team_name: formData.team_name,
+				group_size: parseInt(formData.group_size),
+				project_topic: formData.project_topic,
+				category: parseInt(formData.category),
+				privacy_poclicy_accepted: formData.privacy_policy_accepted,
+			};
+
+			const requestOptions = {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(modifiedFormData),
+			};
+
+			const response = await fetch(`${baseUrl}/hackathon/registration`, requestOptions);
+
+			if (!response.ok) {
+				throw new Error(`HTTP error! Status: ${response.status}`);
+			}
+
+			const userData = await response.json();
+			console.log('Registration successful', userData);
+
+			setFormData(defaultValues);
+			// navigate('/');
+		} catch (error) {
+			console.error('Error:', error);
+		}
 	};
-
-
-	const isValidEmail = (email) => {
-		const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-		return emailPattern.test(email);
-	};
-
 
 	const fetchCategoriesFromAPI = () => {
-
 		axios
 			.get(`${baseUrl}/hackathon/categories-list`)
 			.then((response) => {
-				// Assuming your API response returns an array of category objects
 				setCategories(response.data);
 			})
 			.catch((error) => {
@@ -120,104 +136,100 @@ const Register = () => {
 	};
 
 	useEffect(() => {
-		// Fetch categories from your API
 		fetchCategoriesFromAPI();
 	}, []);
 
 	return (
-		<div className="bg-primary pt-5 ">
+		<div className="bg-primary pt-5 pb-10">
 			<Navbar />
-			<div className="lg:flex justify-between">
+			<div className="lg:flex justify-between px-16">
 				<div className="lg:w-[40%]">
-					<img src={registerImg} alt="register" className=' w-full' />
+					<img src={registerImg} alt="register" className="w-full" />
 				</div>
 
 				<div className="lg:w-[60%]">
-					<div className="w-full lg:bg-[rgba(255,255,255,0.03)] lg:shadow-custom rounded-md lg:p-16  ">
-						<p className="text-3xl font-bold text-secondary pb-10">Register</p>
+					<div className="w-full lg:bg-[rgba(255,255,255,0.03)] lg:shadow-custom rounded-md lg:p-10">
+						<p className="text-3xl font-bold text-secondary pb-5">Register</p>
 						<div className="flex gap-5 justify-start pb-5 items-baseline">
 							<p className="text-white ">Be part of this movement!</p>
-							<div className="flex ">
+							<div className="flex">
 								<img src={emoji1} alt="emoji" />
 								<img src={emoji2} alt="emoji" />
 							</div>
 						</div>
 
-						<p className="font-bold text-2xl text-white pb-5" >CREATE YOUR ACCOUNT</p>
+						<p className="font-bold text-2xl text-white pb-5">CREATE YOUR ACCOUNT</p>
 
 						<form className="grid grid-cols-2 gap-10">
 							<div>
-								<label htmlFor="teamName " className="text-white pb-2 block">Team&rsquo;s Name</label>
+								<label htmlFor="teamName" className="text-white pb-2 block">Team&rsquo;s Name</label>
 								<input
 									type="text"
 									id="teamName"
 									name="team_name"
 									value={formData.team_name}
 									onChange={handleChange}
+									onFocus={() => handleInputFocus("team_name")}
 									placeholder="Enter the name of your group"
-									className="text-white w-full  bg-[rgba(255,255,255,0.03)] border-white border outline-0 rounded-md p-3"
+									className="text-white w-full bg-[rgba(255,255,255,0.03)] border-white border outline-0 rounded-md p-3"
 								/>
-								{formErrors.team_name && (
-									<span className="text-red-500">{formErrors.team_name}</span>
-								)}
+								<div className="text-red-500">{validationErrors.team_name}</div>
 							</div>
 
 							<div>
-								<label htmlFor="phoneNumber " className="text-white pb-2 block">Phone Number</label>
+								<label htmlFor="phoneNumber" className="text-white pb-2 block">Phone Number</label>
 								<input
 									type="number"
 									id='number'
 									name="phone_number"
 									value={formData.phone_number}
 									onChange={handleChange}
+									onFocus={() => handleInputFocus("phone_number")}
 									placeholder="Enter your phone number"
-									className="text-white w-full  bg-[rgba(255,255,255,0.03)] border-white border outline-0 rounded-md p-3"
+									className="text-white w-full bg-[rgba(255,255,255,0.03)] border-white border outline-0 rounded-md p-3"
 								/>
-								{formErrors.phone_number && (
-									<span className="text-red-500">{formErrors.phone_number}</span>
-								)}
+								<div className="text-red-500">{validationErrors.phone_number}</div>
 							</div>
 
 							<div>
-								<label htmlFor="email " className="text-white pb-2 block">Email</label>
+								<label htmlFor="email" className="text-white pb-2 block">Email</label>
 								<input
 									type="email"
 									id="email"
 									name="email"
 									value={formData.email}
 									onChange={handleChange}
+									onFocus={() => handleInputFocus("email")}
 									placeholder="Enter your email"
-									className="text-white w-full  bg-[rgba(255,255,255,0.03)] border-white border outline-0 rounded-md p-3"
+									className="text-white w-full bg-[rgba(255,255,255,0.03)] border-white border outline-0 rounded-md p-3"
 								/>
-								{formErrors.email && (
-									<span className="text-red-500">{formErrors.email}</span>
-								)}
+								<div className="text-red-500">{validationErrors.email}</div>
 							</div>
 
 							<div>
-								<label htmlFor="projectTopic " className="text-white pb-2 block">Project Topic</label>
+								<label htmlFor="projectTopic" className="text-white pb-2 block">Project Topic</label>
 								<input
 									type="text"
 									id="projectTopic"
 									name="project_topic"
 									value={formData.project_topic}
 									onChange={handleChange}
+									onFocus={() => handleInputFocus("project_topic")}
 									placeholder="Enter your phone number"
-									className="text-white w-full  bg-[rgba(255,255,255,0.03)] border-white border outline-0 rounded-md p-3"
+									className="text-white w-full bg-[rgba(255,255,255,0.03)] border-white border outline-0 rounded-md p-3"
 								/>
-								{formErrors.project_topic && (
-									<span className="text-red-500">{formErrors.project_topic}</span>
-								)}
+								<div className="text-red-500">{validationErrors.project_topic}</div>
 							</div>
 
 							<div>
-								<label htmlFor="category " className="text-white pb-2 block">Category</label>
+								<label htmlFor="category" className="text-white pb-2 block">Category</label>
 								<select
 									name="category"
 									id="category"
 									value={formData.category}
 									onChange={handleChange}
-									className="text-white w-full  bg-[rgba(255,255,255,0.03)] border-white border outline-0 rounded-md p-3">
+									onFocus={() => handleInputFocus("category")}
+									className="text-white w-full bg-[rgba(255,255,255,0.03)] border-white border outline-0 rounded-md p-3">
 									<option value="">Select your category</option>
 									{categories.map((category) => (
 										<option key={category.id} value={category.id} className="bg-black">
@@ -225,19 +237,18 @@ const Register = () => {
 										</option>
 									))}
 								</select>
-								{formErrors.category && (
-									<span className="text-red-500">{formErrors.category}</span>
-								)}
+								<div className="text-red-500">{validationErrors.category}</div>
 							</div>
 
 							<div>
-								<label htmlFor="groupSize " className="text-white pb-2 block">Group Size</label>
+								<label htmlFor="groupSize" className="text-white pb-2 block">Group Size</label>
 								<select
 									name="group_size"
 									id="groupSize"
 									value={formData.group_size}
 									onChange={handleChange}
-									className="text-white w-full  bg-[rgba(255,255,255,0.03)] border-white border outline-0 rounded-md p-3">
+									onFocus={() => handleInputFocus("group_size")}
+									className="text-white w-full bg-[rgba(255,255,255,0.03)] border-white border outline-0 rounded-md p-3">
 									<option value="">Select</option>
 									{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((size) => (
 										<option key={size} value={size} className="bg-black">
@@ -245,35 +256,30 @@ const Register = () => {
 										</option>
 									))}
 								</select>
-								{formErrors.group_size && (
-									<span className="text-red-500">{formErrors.group_size}</span>
-								)}
+								<div className="text-red-500">{validationErrors.group_size}</div>
 							</div>
 							<p className="col-span-2 pb-0 mb-0 text-secondary">Please review your registration details before submitting</p>
 
 							<div className="col-span-2 flex gap-5 text-white">
-								<input type="checkbox"
+								<input
+									type="checkbox"
 									name="privacy_poclicy_accepted"
 									onChange={handleChange}
+									onFocus={() => handleInputFocus("privacy_poclicy_accepted")}
 								/>
-								<p>I agreed with the event terms and conditions  and privacy policy</p>
+								<p>I agreed with the event terms and conditions and privacy policy</p>
+								<div className="text-red-500">{validationErrors.privacy_poclicy_accepted}</div>
 							</div>
 
-							<div className="col-span-2 text-center">
+							<div className="col-span-2 text-center w-full">
 								<Button text='Register' onClick={handleSubmit} />
 							</div>
-
 						</form>
-
 					</div>
-
 				</div>
-
 			</div>
-
 		</div>
+	);
+};
 
-	)
-}
-
-export default Register
+export default Register;
