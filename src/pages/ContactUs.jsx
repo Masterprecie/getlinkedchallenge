@@ -2,8 +2,9 @@
 import { useState } from "react"
 import Button from "../components/Button"
 import Navbar from "../components/Navbar"
-import { FacebookIcon, InstagramIcon, LinkedInIcon, TwitterIcon } from "../utils/Icons"
+import { BackIcon, FacebookIcon, InstagramIcon, LinkedInIcon, TwitterIcon } from "../utils/Icons"
 import axios from 'axios'
+import { Link } from "react-router-dom"
 
 
 const ContactUs = () => {
@@ -87,7 +88,7 @@ const ContactUs = () => {
 	return (
 		<div className="bg-primary pt-5 ">
 			<Navbar />
-			<div className="lg:flex lg:px-32 px-10 justify-between lg:py-28 py-10">
+			<div className="lg:flex lg:px-32 px-10 justify-between lg:py-28 pb-10">
 				<div className="lg:w-[20%] w-full text-white space-y-6 lg:block hidden">
 					<p className="text-secondary font-semibold lg:text-[32px]">Get in touch</p>
 					<p>Contact
@@ -111,6 +112,11 @@ const ContactUs = () => {
 				</div>
 
 				<div className="lg:w-[60%] w-full">
+					<div className="pb-5 lg:hidden block">
+						<Link to='/'>
+							<BackIcon />
+						</Link>
+					</div>
 					<div className="w-full lg:bg-[rgba(255,255,255,0.03)] lg:shadow-custom rounded-md lg:p-16  ">
 						<div className="text-secondary font-semibold text-xl pb-4">
 							<p>Questions or need assistance?</p>

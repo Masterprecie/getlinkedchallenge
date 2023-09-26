@@ -66,9 +66,9 @@ const Timeline = () => {
 				<MobileTimeline imgSrc={num3} />
 			</div>
 
-			<div className="md:flex flex-row-reverse items-center gap-6 relative g:pt-20 pt-10" >
+			<div className="md:flex flex-row-reverse items-center gap-6 relative lg:pt-20 pt-10" >
 				<div className='lg:w-[44%] pl-10 lg:pl-0 '>
-					<p className='lg:text-[24px] font-bold text-sm text-secondary'>Announcement of the accepted teams
+					<p className='lg:text-[24px] lg:leading-8 font-bold text-sm text-secondary'>Announcement of the accepted teams
 						and ideas</p>
 					<p className='text-white leading-5 lg:leading-7  text-xs lg:text-base lg:pt-2 pb-2 lg:pb-0'>All teams whom idea has been accepted into getlinked tech
 						hackathon 1.0 2023 are formally announced</p>
@@ -84,7 +84,7 @@ const Timeline = () => {
 				<MobileTimeline imgSrc={num4} />
 			</div>
 
-			<div className="md:flex  items-center gap-6 relative lg:pt-20 pt-10" >
+			<div className="md:flex  items-center gap-6 relative lg:pt-16 pt-10" >
 				<div className='lg:w-[44%] pl-10 lg:pl-0 lg:text-right'>
 					<p className='lg:text-[24px] font-bold text-sm text-secondary'>Getlinked Hackathon 1.0 Offically Begins</p>
 					<p className='text-white  leading-5 lg:leading-7 text-xs lg:text-base lg:pt-2 pb-2 lg:pb-0'>Accepted teams can now proceed to build their
