@@ -134,25 +134,27 @@ const Register = () => {
 	return (
 		<div className="bg-primary pt-5 pb-10">
 			<Navbar />
-			<div className="lg:flex justify-between px-32">
-				<div className="lg:w-[40%] pt-16">
+			<div className="lg:flex justify-between lg:px-32 px-5">
+				<div className="lg:w-[40%] pt-16 hidden lg:block">
 					<img src={registerImg} alt="register" className="w-full" />
 				</div>
 
 				<div className="lg:w-[60%]">
 					<div className="w-full lg:bg-[rgba(255,255,255,0.03)] lg:shadow-custom rounded-md lg:p-10">
-						<p className="text-3xl font-bold text-secondary pb-5">Register</p>
-						<div className="flex gap-5 justify-start pb-5 items-baseline">
-							<p className="text-white ">Be part of this movement!</p>
-							<div className="flex">
-								<img src={emoji1} alt="emoji" />
-								<img src={emoji2} alt="emoji" />
+						<div className="text-center lg:text-left">
+							<p className="text-3xl font-bold text-secondary pb-5">Register</p>
+							<div className="flex gap-5 lg:justify-start pb-5 items-baseline justify-center">
+								<p className="text-white ">Be part of this movement!</p>
+								<div className="lg:flex hidden ">
+									<img src={emoji1} alt="emoji" />
+									<img src={emoji2} alt="emoji" />
+								</div>
 							</div>
 						</div>
 
-						<p className="font-bold text-xl text-white pb-5">CREATE YOUR ACCOUNT</p>
+						<p className="font-bold text-xl text-white pb-5 text-center lg:text-left">CREATE YOUR ACCOUNT</p>
 
-						<form className="grid grid-cols-2 gap-5">
+						<form className="lg:grid grid-cols-2 gap-5 space-y-5 lg:space-y-0">
 							<div>
 								<label htmlFor="teamName" className="text-white pb-1 block">Team&rsquo;s Name</label>
 								<input
