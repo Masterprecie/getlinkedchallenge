@@ -88,7 +88,7 @@ const ContactUs = () => {
 	return (
 		<div className="bg-primary pt-5 ">
 			<Navbar />
-			<div className="lg:flex lg:px-32 px-10 justify-between lg:py-28 pb-10">
+			<div className="lg:flex lg:px-32 px-5 justify-between lg:py-28 pb-10">
 				<div className="lg:w-[20%] w-full text-white space-y-6 lg:block hidden">
 					<p className="text-secondary font-semibold lg:text-[32px]">Get in touch</p>
 					<p>Contact
@@ -155,7 +155,7 @@ const ContactUs = () => {
 									setMessageError('')
 								}}
 								name="message"
-								id="message" cols="30" rows="10" placeholder="Message" className="text-white w-full placeholder:text-white bg-[rgba(255,255,255,0.03)] border-white border outline-0 rounded-md p-3 my-7"></textarea>
+								id="message" cols="30" rows="10" placeholder="Message" className="text-white w-full placeholder:text-white bg-[rgba(255,255,255,0.03)] border-white border outline-0 rounded-md p-3 mb-7"></textarea>
 							<span className="text-red-500">{messageError}</span>
 							<div className="text-center">
 								<Button text='Submit' onClick={handleSubmit} />
@@ -171,7 +171,7 @@ const ContactUs = () => {
 						</form>
 
 						<div className="lg:hidden block pt-5 text-center">
-							<p className="text-secondary font-semibold ">Share on</p>
+							<p className="text-secondary font-semibold pb-3 ">Share on</p>
 							<div className="flex items-center justify-center gap-5">
 								<InstagramIcon />
 								<TwitterIcon />

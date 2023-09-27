@@ -19,11 +19,11 @@ const Hero = () => {
 
 			<div className="lg:text-right text-center lg:pr-10 relative py-6">
 				<div className="relative">
-					<p className="text-white italic font-bold lg:text-[36px] text-xs w-full">Igniting a Revolution in HR Innovation</p>
+					<p className="text-white italic font-bold lg:text-[36px] text-xs mobile:text-lg w-full">Igniting a Revolution in HR Innovation</p>
 					<div className="lg:block hidden absolute bottom-0 right-0 lg:top-[140%] lg:right-[1%]">
 						<HeroIcon />
 					</div>
-					<div className="block lg:hidden absolute top-[80%] right-[13%] ">
+					<div className="block lg:hidden absolute top-[80%] right-[13%] mobile:right-[5%] ">
 						<HeroIconMobile />
 					</div>
 
@@ -46,13 +46,13 @@ const Hero = () => {
 
 			<div className=" lg:flex relative">
 				<div className="relative lg:w-1/2 w-full text-center lg:text-left text-white pt-10 lg:pt-20">
-					<div className="absolute lg:right-[12%] lg:top-[5%] right-[16%] top-[6%] ">
+					<div className="absolute lg:right-[12%] lg:top-[5%] right-[20%] top-[6%]  mobile:right-[24%]">
 						<img src={bulb} alt="bulb" className='lg:w-full w-5' />
 					</div>
-					<p className="font-bold lg:text-7xl text-[25px] ">getlinked Tech</p>
+					<p className="font-bold lg:text-7xl text-[25px] mobile:text-3xl">getlinked Tech</p>
 					<div className='flex lg:block justify-center'>
 						<div>
-							<p className="font-bold lg:text-7xl text-[25px]" >Hackathon <span className="text-secondary">1.0</span></p>
+							<p className="font-bold lg:text-7xl text-[25px] mobile:text-3xl" >Hackathon <span className="text-secondary">1.0</span></p>
 						</div>
 						<div className="flex items-center lg:hidden">
 							<div>

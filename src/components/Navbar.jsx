@@ -12,7 +12,7 @@ const Navbar = () => {
 	};
 
 	return (
-		<nav className="bg-primary py-5 md:px-32 w-full px-5 relative z-30">
+		<nav className="bg-primary py-5 lg:px-32 w-full px-5 relative z-30">
 			<div className=" flex justify-between items-center">
 				<div className="flex items-center">
 					<img src={logo} alt="logo" />

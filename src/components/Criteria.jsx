@@ -9,7 +9,7 @@ import purple from "../assets/purple.png"
 
 const Criteria = () => {
 	return (
-		<div className="md:flex items-center py-16 bg-primary md:px-32 px-5 relative overflow-hidden">
+		<div className="lg:flex items-center py-16 bg-primary lg:px-32 px-5 relative overflow-hidden">
 			<div className="absolute lg:top-[30%] lg:left-[2%] top-[5%]  left-0">
 				<img src={purple} alt="bg" className='lg:w-[80%] w-full' />
 			</div>
