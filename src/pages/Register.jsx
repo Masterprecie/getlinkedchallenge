@@ -5,6 +5,7 @@ import emoji1 from '../assets/emoji1.png';
 import emoji2 from '../assets/emoji2.png';
 import Button from "../components/Button";
 import axios from "axios";
+import SuccessModal from "../components/SuccessModal";
 
 const defaultValues = {
 	email: "",
@@ -21,16 +22,13 @@ const Register = () => {
 
 	const [formData, setFormData] = useState(defaultValues);
 	const [categories, setCategories] = useState([]);
-	const [validationErrors, setValidationErrors] = useState({
-		email: "",
-		phone_number: "",
-		team_name: "",
-		project_topic: "",
-		category: "",
-		group_size: "",
-		privacy_poclicy_accepted: "",
-	});
+	const [validationErrors, setValidationErrors] = useState(defaultValues);
 
+	const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+	const handleSuccessModalClose = () => {
+		setShowSuccessModal(false);
+	};
 
 	const handleInputFocus = (fieldName) => {
 		// Reset the validation error for the given field when it is focused
@@ -55,6 +53,7 @@ const Register = () => {
 			}));
 		}
 	};
+
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -97,28 +96,21 @@ const Register = () => {
 				group_size: parseInt(formData.group_size),
 				project_topic: formData.project_topic,
 				category: parseInt(formData.category),
-				privacy_poclicy_accepted: formData.privacy_policy_accepted,
+				privacy_poclicy_accepted: formData.privacy_poclicy_accepted,
 			};
 
-			const requestOptions = {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(modifiedFormData),
-			};
+			const response = await axios.post(`${baseUrl}/hackathon/registration`, modifiedFormData,
+				{
+					headers: {
+						'Content-Type': 'application/json',
+					},
+				}
+			);
 
-			const response = await fetch(`${baseUrl}/hackathon/registration`, requestOptions);
-
-			if (!response.ok) {
-				throw new Error(`HTTP error! Status: ${response.status}`);
-			}
-
-			const userData = await response.json();
-			console.log('Registration successful', userData);
+			console.log('Registration successful', response.data);
 
 			setFormData(defaultValues);
-			// navigate('/');
+			setShowSuccessModal(true);
 		} catch (error) {
 			console.error('Error:', error);
 		}
@@ -142,8 +134,8 @@ const Register = () => {
 	return (
 		<div className="bg-primary pt-5 pb-10">
 			<Navbar />
-			<div className="lg:flex justify-between px-16">
-				<div className="lg:w-[40%]">
+			<div className="lg:flex justify-between px-32">
+				<div className="lg:w-[40%] pt-16">
 					<img src={registerImg} alt="register" className="w-full" />
 				</div>
 
@@ -158,11 +150,11 @@ const Register = () => {
 							</div>
 						</div>
 
-						<p className="font-bold text-2xl text-white pb-5">CREATE YOUR ACCOUNT</p>
+						<p className="font-bold text-xl text-white pb-5">CREATE YOUR ACCOUNT</p>
 
-						<form className="grid grid-cols-2 gap-10">
+						<form className="grid grid-cols-2 gap-5">
 							<div>
-								<label htmlFor="teamName" className="text-white pb-2 block">Team&rsquo;s Name</label>
+								<label htmlFor="teamName" className="text-white pb-1 block">Team&rsquo;s Name</label>
 								<input
 									type="text"
 									id="teamName"
@@ -171,13 +163,13 @@ const Register = () => {
 									onChange={handleChange}
 									onFocus={() => handleInputFocus("team_name")}
 									placeholder="Enter the name of your group"
-									className="text-white w-full bg-[rgba(255,255,255,0.03)] border-white border outline-0 rounded-md p-3"
+									className="text-white w-full bg-[rgba(255,255,255,0.03)] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] border-white border outline-0 rounded-md p-2"
 								/>
 								<div className="text-red-500">{validationErrors.team_name}</div>
 							</div>
 
 							<div>
-								<label htmlFor="phoneNumber" className="text-white pb-2 block">Phone Number</label>
+								<label htmlFor="phoneNumber" className="text-white pb-1 block">Phone Number</label>
 								<input
 									type="number"
 									id='number'
@@ -186,13 +178,13 @@ const Register = () => {
 									onChange={handleChange}
 									onFocus={() => handleInputFocus("phone_number")}
 									placeholder="Enter your phone number"
-									className="text-white w-full bg-[rgba(255,255,255,0.03)] border-white border outline-0 rounded-md p-3"
+									className="text-white w-full bg-[rgba(255,255,255,0.03)] border-white border outline-0 rounded-md p-2 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]"
 								/>
 								<div className="text-red-500">{validationErrors.phone_number}</div>
 							</div>
 
 							<div>
-								<label htmlFor="email" className="text-white pb-2 block">Email</label>
+								<label htmlFor="email" className="text-white pb-1 block">Email</label>
 								<input
 									type="email"
 									id="email"
@@ -201,13 +193,13 @@ const Register = () => {
 									onChange={handleChange}
 									onFocus={() => handleInputFocus("email")}
 									placeholder="Enter your email"
-									className="text-white w-full bg-[rgba(255,255,255,0.03)] border-white border outline-0 rounded-md p-3"
+									className="text-white w-full bg-[rgba(255,255,255,0.03)] border-white border outline-0 rounded-md p-2 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]"
 								/>
 								<div className="text-red-500">{validationErrors.email}</div>
 							</div>
 
 							<div>
-								<label htmlFor="projectTopic" className="text-white pb-2 block">Project Topic</label>
+								<label htmlFor="projectTopic" className="text-white pb-1 block">Project Topic</label>
 								<input
 									type="text"
 									id="projectTopic"
@@ -216,20 +208,20 @@ const Register = () => {
 									onChange={handleChange}
 									onFocus={() => handleInputFocus("project_topic")}
 									placeholder="Enter your phone number"
-									className="text-white w-full bg-[rgba(255,255,255,0.03)] border-white border outline-0 rounded-md p-3"
+									className="text-white w-full bg-[rgba(255,255,255,0.03)] border-white border outline-0 rounded-md p-2 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]"
 								/>
 								<div className="text-red-500">{validationErrors.project_topic}</div>
 							</div>
 
 							<div>
-								<label htmlFor="category" className="text-white pb-2 block">Category</label>
+								<label htmlFor="category" className="text-white pb-1 block">Category</label>
 								<select
 									name="category"
 									id="category"
 									value={formData.category}
 									onChange={handleChange}
 									onFocus={() => handleInputFocus("category")}
-									className="text-white w-full bg-[rgba(255,255,255,0.03)] border-white border outline-0 rounded-md p-3">
+									className="text-white w-full bg-[rgba(255,255,255,0.03)] border-white border outline-0 rounded-md p-2 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
 									<option value="">Select your category</option>
 									{categories.map((category) => (
 										<option key={category.id} value={category.id} className="bg-black">
@@ -241,14 +233,14 @@ const Register = () => {
 							</div>
 
 							<div>
-								<label htmlFor="groupSize" className="text-white pb-2 block">Group Size</label>
+								<label htmlFor="groupSize" className="text-white pb-1 block">Group Size</label>
 								<select
 									name="group_size"
 									id="groupSize"
 									value={formData.group_size}
 									onChange={handleChange}
 									onFocus={() => handleInputFocus("group_size")}
-									className="text-white w-full bg-[rgba(255,255,255,0.03)] border-white border outline-0 rounded-md p-3">
+									className="text-white w-full bg-[rgba(255,255,255,0.03)] border-white border outline-0 rounded-md p-2 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
 									<option value="">Select</option>
 									{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((size) => (
 										<option key={size} value={size} className="bg-black">
@@ -272,13 +264,18 @@ const Register = () => {
 							</div>
 
 							<div className="col-span-2 text-center w-full">
-								<Button text='Register' onClick={handleSubmit} />
+								<Button text='Register' onClick={handleSubmit} width='100%' />
 							</div>
 						</form>
 					</div>
 				</div>
 			</div>
+			{/* Success Modal */}
+			{showSuccessModal && (
+				<SuccessModal onCLose={handleSuccessModalClose} />
+			)}
 		</div>
+
 	);
 };
 
