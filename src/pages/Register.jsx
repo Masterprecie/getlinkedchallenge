@@ -156,7 +156,7 @@ const Register = () => {
 
 						<form className="lg:grid grid-cols-2 gap-5 space-y-5 lg:space-y-0">
 							<div>
-								<label htmlFor="teamName" className="text-white pb-1 block">Team&rsquo;s Name</label>
+								<label htmlFor="teamName" className="text-white pb-1 block lg:text-base text-sm">Team&rsquo;s Name</label>
 								<input
 									type="text"
 									id="teamName"
@@ -171,7 +171,7 @@ const Register = () => {
 							</div>
 
 							<div>
-								<label htmlFor="phoneNumber" className="text-white pb-1 block">Phone Number</label>
+								<label htmlFor="phoneNumber" className="text-white pb-1 block lg:text-base text-sm">Phone Number</label>
 								<input
 									type="number"
 									id='number'
@@ -186,7 +186,7 @@ const Register = () => {
 							</div>
 
 							<div>
-								<label htmlFor="email" className="text-white pb-1 block">Email</label>
+								<label htmlFor="email" className="text-white pb-1 block lg:text-base text-sm">Email</label>
 								<input
 									type="email"
 									id="email"
@@ -201,7 +201,7 @@ const Register = () => {
 							</div>
 
 							<div>
-								<label htmlFor="projectTopic" className="text-white pb-1 block">Project Topic</label>
+								<label htmlFor="projectTopic" className="text-white pb-1 block lg:text-base text-sm">Project Topic</label>
 								<input
 									type="text"
 									id="projectTopic"
@@ -216,7 +216,7 @@ const Register = () => {
 							</div>
 
 							<div>
-								<label htmlFor="category" className="text-white pb-1 block">Category</label>
+								<label htmlFor="category" className="text-white pb-1 block lg:text-base text-sm">Category</label>
 								<select
 									name="category"
 									id="category"
@@ -235,7 +235,7 @@ const Register = () => {
 							</div>
 
 							<div>
-								<label htmlFor="groupSize" className="text-white pb-1 block">Group Size</label>
+								<label htmlFor="groupSize" className="text-white pb-1 block lg:text-base text-sm">Group Size</label>
 								<select
 									name="group_size"
 									id="groupSize"

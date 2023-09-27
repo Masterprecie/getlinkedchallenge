@@ -39,7 +39,7 @@ const Privacy = () => {
 						It’s our aim to always take of our participant</p>
 				</div>
 
-				<div className=' border border-secondary bg-[rgba(217,217,217,0.03)] lg:p-16 p-8 text-white '>
+				<div className=' border border-secondary bg-[rgba(217,217,217,0.03)] lg:p-10 p-8 text-white '>
 					<div >
 						<p className='text-white leading-7 text-center text-sm lg:text-base pb-10'>At getlinked tech Hackathon 1.0, we value your privacy
 							and are committed to protecting your personal information.
