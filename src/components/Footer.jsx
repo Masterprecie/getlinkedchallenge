@@ -6,7 +6,7 @@ import star3 from '../assets/star3.png'
 import { FacebookIcon, InstagramIcon, LinkedInIcon, LocationIcon, PhoneIcon, TwitterIcon } from '../utils/Icons'
 const Footer = () => {
 	return (
-		<div className="bg-[#100B20] w-full lg:px-32 px-10 py-14 relative">
+		<div className="bg-[#100B20] w-full lg:px-32 px-5 py-14 relative">
 			<div className='absolute bottom-[24%] right-[50%] '>
 				<img src={star1} alt="icon" className='lg:w-4 w-2' />
 			</div>

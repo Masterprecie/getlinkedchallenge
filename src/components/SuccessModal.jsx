@@ -4,7 +4,7 @@ import Button from './Button'
 import { Link } from 'react-router-dom'
 const SuccessModal = ({ onClose }) => {
 	return (
-		<div className="fixed inset-0 flex items-center justify-center z-50 ">
+		<div className="fixed inset-0 flex items-center justify-center z-50 px-10">
 			{/* Overlay */}
 			<div className="fixed inset-0 bg-register opacity-90"></div>
 
@@ -17,9 +17,9 @@ const SuccessModal = ({ onClose }) => {
 
 					<div>
 						<div className='w-full text-center mx-auto'>
-							<p className="text-white text-[32px] font-semibold">Congratulations <br />
+							<p className="text-white text-xl lg:text-[32px] font-semibold">Congratulations <br />
 								you have successfully Registered!</p>
-							<p className='text-sm font-semibold text-white pb-2'>Yes, it was easy and you did it! <br />
+							<p className='lg:text-sm text-xs font-semibold text-white py-2'>Yes, it was easy and you did it! <br />
 								check your mail box for next step</p>
 						</div>
 					</div>

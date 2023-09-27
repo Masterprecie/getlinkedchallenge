@@ -6,7 +6,7 @@ import { CheckIcon, LockIcon } from '../utils/Icons'
 import Button from './Button'
 const Privacy = () => {
 	return (
-		<div className="lg:flex w-full items-center bg-primary lg:px-32 px-10 pb-20 relative">
+		<div className="lg:flex w-full items-center bg-primary lg:px-32 px-5 pb-20 relative">
 			<div className='absolute bottom-[30%] left-[3%]'>
 				<img src={star1} alt="icon" className='lg:w-5 w-3' />
 			</div>
@@ -32,8 +32,8 @@ const Privacy = () => {
 
 			<div className="lg:w-1/2 w-full lg:pt-32 pt-12" >
 				<div className='pb-10 text-center lg:text-left'>
-					<p className='text-[32px] font-bold text-white'>Privacy Policy and </p>
-					<p className='text-[32px] font-bold text-secondary'>Terms</p>
+					<p className='text-2xl lg:text-[32px] font-bold text-white'>Privacy Policy and </p>
+					<p className='text-2xl lg:text-[32px] font-bold text-secondary'>Terms</p>
 					<p className='text-[rgba(255,255,255,0.75)] py-5 text-sm'>Last updated on September 12, 2023.</p>
 					<p className='text-white leading-7 text-sm lg:w-[75%] w-full '>Below are our privacy & policy, which outline a lot of goodies.
 						It’s our aim to always take of our participant</p>

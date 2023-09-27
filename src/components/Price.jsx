@@ -8,7 +8,7 @@ import star4 from '../assets/star4.png'
 
 const Price = () => {
 	return (
-		<div className="lg:flex gap-10 w-full  pb-20  bg-primary md:px-20 px-10 relative">
+		<div className="lg:flex gap-10 w-full pb-20 bg-primary md:px-20 px-5 relative">
 			<div className='lg:hidden block py-10  w-full  text-center'>
 				<p className='text-xl font-bold text-white'>Prizes and</p>
 				<p className='text-xl font-bold text-secondary'>Rewards</p>
@@ -50,7 +50,7 @@ const Price = () => {
 						</div>
 					</div>
 
-					<div className='absolute lg:left-[29%] lg:top-[-70%] left-[32%] top-[-45%]'>
+					<div className='absolute lg:left-[29%] lg:top-[-70%] left-[33%] top-[-45%]'>
 						<img src={gold} alt="icon" className='lg:w-full w-28' />
 					</div>
 					<div className='absolute left-[2%] top-[-30%]'>

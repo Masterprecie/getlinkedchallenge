@@ -11,20 +11,24 @@ import { HeroIcon, HeroIconMobile } from "../utils/Icons"
 import { Link } from "react-router-dom"
 const Hero = () => {
 	return (
-		<div className="bg-primary z-20 lg:pl-32 lg:px-0 px-10 h-full relative">
+		<div className="bg-primary z-20 lg:pl-32 lg:px-0 px-5 h-full relative">
 			{/* bg-shadow */}
 			<div className="absolute lg:top-[-35%] lg:left-[2%] top-[-5%]  left-0">
 				<img src={purple} alt="bg" className='lg:w-[80%] w-full' />
 			</div>
 
 			<div className="lg:text-right text-center lg:pr-10 relative py-6">
-				<p className="text-white italic font-bold lg:text-[36px] text-sm">Igniting a Revolution in HR Innovation</p>
-				<div className="lg:block hidden absolute lg:bottom-[8%] lg:right-[3%] bottom-[10%] right-5">
-					<HeroIcon />
+				<div className="relative">
+					<p className="text-white italic font-bold lg:text-[36px] text-xs w-full">Igniting a Revolution in HR Innovation</p>
+					<div className="lg:block hidden absolute bottom-0 right-0 lg:top-[140%] lg:right-[1%]">
+						<HeroIcon />
+					</div>
+					<div className="block lg:hidden absolute top-[80%] right-[10%] ">
+						<HeroIconMobile />
+					</div>
+
 				</div>
-				<div className="block lg:hidden absolute lg:bottom-[15%] lg:right-[3%] bottom-[23%] right-3">
-					<HeroIconMobile />
-				</div>
+
 
 				<div className="absolute lg:left-[3%] lg:bottom-3 left-[20%] bottom-[-45%]">
 					<img src={star} alt="star" className='lg:w-full w-3' />
@@ -45,10 +49,10 @@ const Hero = () => {
 					<div className="absolute lg:right-[12%] lg:top-[5%] right-[16%] top-[6%] ">
 						<img src={bulb} alt="bulb" className='lg:w-full w-5' />
 					</div>
-					<p className="font-bold lg:text-7xl text-[30px] ">getlinked Tech</p>
+					<p className="font-bold lg:text-7xl text-[25px] ">getlinked Tech</p>
 					<div className='flex lg:block justify-center'>
 						<div>
-							<p className="font-bold lg:text-7xl text-[30px]" >Hackathon <span className="text-secondary">1.0</span></p>
+							<p className="font-bold lg:text-7xl text-[25px]" >Hackathon <span className="text-secondary">1.0</span></p>
 						</div>
 						<div className="flex items-center lg:hidden">
 							<div>
@@ -61,7 +65,7 @@ const Hero = () => {
 						</div>
 					</div>
 
-					<p className="text-xl my-5 leading-9">Participate in getlinked tech Hackathon 2023 stand
+					<p className="lg:text-xl text-base my-5 leading-9">Participate in getlinked tech Hackathon 2023 stand
 						a chance to win a Big prize
 					</p>
 

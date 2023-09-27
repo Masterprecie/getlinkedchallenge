@@ -12,11 +12,11 @@ import TimelineDates from './TimelineDates';
 
 const Timeline = () => {
 	return (
-		<div className="py-20 bg-primary lg:px-20 px-10 relative">
+		<div className="lg:py-20 py-10 bg-primary lg:px-20 px-5 relative">
 			<div className="flex justify-center items-center lg:pb-32 pb-10">
 				<div className="text-center text-white lg:w-[35%]">
-					<p className='text-[32px] font-bold '>Timeline</p>
-					<p>Here is the breakdown of the time we anticipate
+					<p className='lg:text-[32px] text-2xl font-bold '>Timeline</p>
+					<p className='text-sm lg:text-base'>Here is the breakdown of the time we anticipate
 						using for the upcoming event.
 					</p>
 				</div>

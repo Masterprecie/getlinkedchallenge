@@ -6,15 +6,15 @@ import star4 from '../assets/star4.png'
 import FaqItem from './FaqItem'
 const Faq = () => {
 	return (
-		<div className="lg:flex items-center py-20  bg-primary lg:px-32 px-10 relative">
+		<div className="lg:flex items-center lg:py-20 py-10 bg-primary lg:px-32 px-5 relative">
 			<div className='absolute lg:top-[8%] lg:left-[8%]'>
 				<img src={star2} alt="star" className='lg:w-5 w-3' />
 			</div>
 			<div className="lg:w-1/2 w-full ">
 				<div className='text-center'>
-					<p className='text-[32px] font-bold text-white'>Frequently Ask</p>
-					<p className='text-[32px] font-bold text-secondary'>Question</p>
-					<p className='text-white font-normal leading-7 py-5'>We got answers to the questions that you might
+					<p className='text-2xl lg:text-[32px] font-bold text-white'>Frequently Ask</p>
+					<p className='text-2xl lg:text-[32px] font-bold text-secondary'>Question</p>
+					<p className='text-white font-normal text-sm lg:text-base leading-7 py-5'>We got answers to the questions that you might
 						want to ask about getlinked Hackathon 1.0
 					</p>
 				</div>

@@ -9,7 +9,7 @@ import purple from "../assets/purple.png"
 
 const Criteria = () => {
 	return (
-		<div className="md:flex items-center py-16 bg-primary md:px-32 px-10 relative overflow-hidden">
+		<div className="md:flex items-center py-16 bg-primary md:px-32 px-5 relative overflow-hidden">
 			<div className="absolute lg:top-[30%] lg:left-[2%] top-[5%]  left-0">
 				<img src={purple} alt="bg" className='lg:w-[80%] w-full' />
 			</div>
@@ -38,8 +38,8 @@ const Criteria = () => {
 			</div>
 
 			<div className='lg:w-1/2 w-full text-center lg:text-left relative'>
-				<p className='text-[32px] font-bold text-white'>Judging Criteria</p>
-				<p className='text-[32px] font-bold text-secondary'>Key attributes</p>
+				<p className='text-2xl lg:text-[32px] font-bold text-white'>Judging Criteria</p>
+				<p className='text-2xl lg:text-[32px] font-bold text-secondary'>Key attributes</p>
 				{criteria.map((data) => {
 					const { id, name, content } = data
 					return (

@@ -6,11 +6,11 @@ import line from '../assets/line.png'
 import line2 from '../assets/line2.png'
 const Partners = () => {
 	return (
-		<div className="bg-primary w-full lg:px-20 px-10 py-20 relative">
+		<div className="bg-primary w-full lg:px-20 px-5 py-20 relative">
 			<div className=" w-full flex justify-center items-center  text-white  leading-7">
 				<div className="lg:w-1/2  w-full text-center">
-					<p className="lg:text-[32px] text-xl font-bold pb-4">Partners and Sponsors</p>
-					<p className='lg:text-base text-xs'>Getlinked Hackathon 1.0 is honored to have the following major
+					<p className="lg:text-[32px] text-2xl font-bold pb-4">Partners and Sponsors</p>
+					<p className='lg:text-base text-sm'>Getlinked Hackathon 1.0 is honored to have the following major
 						companies as its partners and sponsors
 					</p>
 				</div>
