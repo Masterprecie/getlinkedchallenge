@@ -23,7 +23,7 @@ const Hero = () => {
 					<div className="lg:block hidden absolute bottom-0 right-0 lg:top-[140%] lg:right-[1%]">
 						<HeroIcon />
 					</div>
-					<div className="block lg:hidden absolute top-[80%] right-[10%] ">
+					<div className="block lg:hidden absolute top-[80%] right-[13%] ">
 						<HeroIconMobile />
 					</div>
 
