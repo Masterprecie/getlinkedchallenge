@@ -53,10 +53,10 @@ const Price = () => {
 					<div className='absolute lg:left-[29%] lg:top-[-70%] left-[33%] top-[-45%]'>
 						<img src={gold} alt="icon" className='lg:w-full w-28' />
 					</div>
-					<div className='absolute left-[2%] top-[-30%]'>
+					<div className='absolute left-[4%] lg:left-[2%] top-[-30%]'>
 						<img src={silver} alt="icon" className='lg:w-full w-20' />
 					</div>
-					<div className='absolute right-[2%] top-[-30%]'>
+					<div className='absolute right-[3%] lg:right-[2%] top-[-30%]'>
 						<img src={bronze} alt="icon" className='lg:w-full w-20' />
 					</div>
 				</div>

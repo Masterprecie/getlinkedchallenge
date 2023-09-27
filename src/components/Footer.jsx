@@ -32,7 +32,7 @@ const Footer = () => {
 					</p>
 
 					<div className='flex gap-5 items-center relative text-xs'>
-						<div className='absolute top-0 lg:left-[16%] left-[27 a%]'>
+						<div className='absolute top-0 lg:left-[16%] left-[27%]'>
 							<img src={line} alt="icon" className='w-[1px] h-5' />
 						</div>
 						<p>Terms of Use</p>

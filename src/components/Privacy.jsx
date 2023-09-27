@@ -41,7 +41,7 @@ const Privacy = () => {
 
 				<div className=' border border-secondary bg-[rgba(217,217,217,0.03)] lg:p-16 p-8 text-white '>
 					<div >
-						<p className='text-white leading-7 text-center pb-10'>At getlinked tech Hackathon 1.0, we value your privacy
+						<p className='text-white leading-7 text-center text-sm lg:text-base pb-10'>At getlinked tech Hackathon 1.0, we value your privacy
 							and are committed to protecting your personal information.
 							This Privacy Policy outlines how we collect, use, disclose,
 							and safeguard your data when you participate in our tech
@@ -49,13 +49,13 @@ const Privacy = () => {
 							to the practices described in this policy.</p>
 
 						<p className='text-secondary font-bold text-base'>Licensing Policy</p>
-						<p>Here are terms of our Standard License:</p>
+						<p className='text-sm lg:text-base'>Here are terms of our Standard License:</p>
 					</div>
 					<div className='flex gap-5 pt-3'>
 						<div>
 							<CheckIcon />
 						</div>
-						<div>
+						<div className='text-sm lg:text-base'>
 							<p>The Standard License grants you a non-exclusive right to
 								navigate and register for our event</p>
 						</div>
@@ -64,7 +64,7 @@ const Privacy = () => {
 						<div>
 							<CheckIcon />
 						</div>
-						<div>
+						<div className='text-sm lg:text-base'>
 							<p>You are licensed to use the item available at any free source
 								sites, for your project developement</p>
 						</div>

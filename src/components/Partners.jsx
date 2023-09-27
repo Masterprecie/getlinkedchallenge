@@ -18,25 +18,25 @@ const Partners = () => {
 
 			<div className="border rounded-md border-secondary lg:p-20 px-5 relative mt-16  lg:py-32 py-10">
 				<div className='absolute top-[23%] left-[35%]'>
-					<img src={line} alt="icon" className='w-[2px] h-24' />
+					<img src={line} alt="icon" className='w-[2px] h-16 lg:h-24' />
 				</div>
 				<div className='absolute top-[23%] left-[65%]'>
-					<img src={line} alt="icon" className='w-[2px] h-24' />
+					<img src={line} alt="icon" className='w-[2px] h-16 lg:h-24' />
 				</div>
 				<div className='absolute bottom-[20%] left-[35%]'>
-					<img src={line} alt="icon" className='w-[2px] h-24' />
+					<img src={line} alt="icon" className='w-[2px] h-16 lg:h-24' />
 				</div>
 				<div className='absolute bottom-[20%] left-[65%]'>
-					<img src={line} alt="icon" className='w-[2px] h-24' />
+					<img src={line} alt="icon" className='w-[2px] h-16 lg:h-24' />
 				</div>
 				<div className='absolute top-[52%] left-[68%]'>
-					<img src={line2} alt="icon" className='h-[2px] lg:w-[18rem]' />
+					<img src={line2} alt="icon" className='h-[2px] w-20 lg:w-[18rem]' />
 				</div>
 				<div className='absolute top-[52%] left-[38%]'>
-					<img src={line2} alt="icon" className='h-[2px] lg:w-[18rem]' />
+					<img src={line2} alt="icon" className='h-[2px] w-20 lg:w-[18rem]' />
 				</div>
 				<div className='absolute top-[52%] left-[8%]'>
-					<img src={line2} alt="icon" className='h-[2px] lg:w-[18rem]' />
+					<img src={line2} alt="icon" className='h-[2px] w-20 lg:w-[18rem]' />
 				</div>
 
 
