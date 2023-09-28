@@ -1,12 +1,38 @@
-import privacy from '../assets/privacy.png'
-import star1 from '../assets/star1.png'
-import star4 from '../assets/star4.png'
-import star3 from '../assets/star3.png'
-import { CheckIcon, LockIcon } from '../utils/Icons'
-import Button from './Button'
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import privacy from '../assets/privacy.png';
+import star1 from '../assets/star1.png';
+import star4 from '../assets/star4.png';
+import star3 from '../assets/star3.png';
+import { CheckIcon, LockIcon } from '../utils/Icons';
+import Button from './Button';
+
 const Privacy = () => {
+	const { ref, inView } = useInView({
+		threshold: 0.5,
+		triggerOnce: true,
+	});
+
+	const containerVariants = {
+		hidden: {
+			opacity: 0,
+			y: 50,
+		},
+		visible: {
+			opacity: 1,
+			y: 0,
+			transition: { duration: 1 },
+		},
+	};
+
 	return (
-		<div className="lg:flex w-full items-center bg-primary lg:px-32 px-5 pb-20 relative">
+		<motion.div
+			ref={ref}
+			variants={containerVariants}
+			initial="hidden"
+			animate={inView ? 'visible' : 'hidden'}
+			className="lg:flex w-full items-center bg-primary lg:px-32 px-5 pb-20 relative"
+		>
 			<div className='absolute bottom-[30%] left-[3%]'>
 				<img src={star1} alt="icon" className='lg:w-5 w-3' />
 			</div>
@@ -79,14 +105,21 @@ const Privacy = () => {
 
 			</div>
 			<div className="relative lg:w-1/2 w-full pt-[30%]">
-				<img src={privacy} alt="img" className='relative z-10' />
+				<motion.img
+					src={privacy}
+					alt="img"
+					className='relative z-10'
+					initial={{ opacity: 0, y: 50 }}
+					animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+					transition={{ duration: 1 }}
+				/>
 				<div className=' absolute top-[-16%] lg:top-[12%] left-[10%] '>
 					<LockIcon />
 				</div>
 
 			</div>
-		</div>
-	)
-}
+		</motion.div>
+	);
+};
 
-export default Privacy
+export default Privacy;

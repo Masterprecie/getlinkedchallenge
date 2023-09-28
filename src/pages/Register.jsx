@@ -6,6 +6,7 @@ import emoji2 from '../assets/emoji2.png';
 import Button from "../components/Button";
 import axios from "axios";
 import SuccessModal from "../components/SuccessModal";
+import { motion } from "framer-motion";
 
 const defaultValues = {
 	email: "",
@@ -132,7 +133,12 @@ const Register = () => {
 	}, []);
 
 	return (
-		<div className="bg-primary pt-5 pb-10">
+		<motion.div
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			transition={{ duration: 0.5 }}
+			className="bg-primary pt-5 pb-10"
+		>
 			<Navbar />
 			<div className="lg:flex justify-between lg:px-32 px-5">
 				<div className="lg:w-[40%] pt-16 hidden lg:block">
@@ -276,7 +282,7 @@ const Register = () => {
 			{showSuccessModal && (
 				<SuccessModal onCLose={handleSuccessModalClose} />
 			)}
-		</div>
+		</motion.div>
 
 	);
 };

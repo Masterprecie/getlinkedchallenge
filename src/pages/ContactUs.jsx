@@ -1,14 +1,13 @@
-
 import { useState } from "react"
 import Button from "../components/Button"
 import Navbar from "../components/Navbar"
 import { BackIcon, FacebookIcon, InstagramIcon, LinkedInIcon, TwitterIcon } from "../utils/Icons"
 import axios from 'axios'
 import { Link } from "react-router-dom"
-
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 const ContactUs = () => {
-
 
 	const [first_name, setFirst_name] = useState("");
 	const [email, setEmail] = useState("");
@@ -83,10 +82,31 @@ const ContactUs = () => {
 		}
 	};
 
+	const { ref, inView } = useInView({
+		threshold: 0.5,
+		triggerOnce: true,
+	});
 
+	const containerVariants = {
+		hidden: {
+			opacity: 0,
+			y: 50,
+		},
+		visible: {
+			opacity: 1,
+			y: 0,
+			transition: { duration: 1 },
+		},
+	};
 
 	return (
-		<div className="bg-primary pt-5 ">
+		<motion.div
+			ref={ref}
+			variants={containerVariants}
+			initial="hidden"
+			animate={inView ? 'visible' : 'hidden'}
+			className="bg-primary pt-5 "
+		>
 			<Navbar />
 			<div className="lg:flex lg:px-32 px-5 justify-between lg:py-28 pb-10">
 				<div className="lg:w-[20%] w-full text-white space-y-6 lg:block hidden">
@@ -182,7 +202,7 @@ const ContactUs = () => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	)
 }
 
