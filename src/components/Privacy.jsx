@@ -9,7 +9,7 @@ import Button from './Button';
 
 const Privacy = () => {
 	const { ref, inView } = useInView({
-		threshold: 0.5,
+		threshold: 0.2,
 		triggerOnce: true,
 	});
 

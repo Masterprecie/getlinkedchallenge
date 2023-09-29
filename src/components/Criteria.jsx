@@ -22,7 +22,7 @@ const Criteria = () => {
 
 	const imageVariants = {
 		hidden: {
-			x: -100
+			x: -50
 		},
 		visible: {
 			x: 0,
@@ -32,7 +32,7 @@ const Criteria = () => {
 
 
 	const [ref, inView] = useInView({
-		threshold: 0.5, // Trigger animation when component is 50% in view
+		threshold: 0.3, // Trigger animation when component is 50% in view
 		triggerOnce: true // Only trigger animation once
 	});
 
