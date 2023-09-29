@@ -12,7 +12,7 @@ import Footer from "../components/Footer"
 
 const Home = () => {
 	return (
-		<div className="bg-primary ">
+		<div className="bg-primary overflow-hidden">
 			<Navbar />
 			<div className=" border-t border-[rgba(255,255,255,0.18)]" />
 			<Hero />
